@@ -1,0 +1,15 @@
+menu "GPIO Input Configuration"
+    config GPIO_INPUT
+        int "Input GPIO number"
+        range 0 33
+        default 18
+        help
+            GPIO number to read input.
+
+    config TIMER_READ_PERIOD_MS
+        int "Reading timer period in miliseconds"
+        range 10 3600000
+        default 200
+        help
+            Define the reading timer period in milliseconds.
+endmenu

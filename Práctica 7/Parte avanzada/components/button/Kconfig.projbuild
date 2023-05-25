@@ -1,0 +1,8 @@
+menu "Button Configuration"
+    config GPIO_BUTTON
+    int "GPIO number for button input"
+    range 0 33
+    default 0
+    help
+        GPIO number for button input
+endmenu

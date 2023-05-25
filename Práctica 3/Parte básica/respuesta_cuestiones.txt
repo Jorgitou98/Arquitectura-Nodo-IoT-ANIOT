@@ -1,0 +1,11 @@
+Cuestión 1 - ¿Qué hará la tarea inicial (la que invoca a app_main()) tras configurar el timer y el evento?
+
+La tarea principal se elimina a sí misma ya que la función app_main() retorna tras configurar el timer y el evento. Tal y como se explica en el apartado "ESP-IDF FreeRTOS Applications" de la API de FreeRTOS (https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos.html), la tarea principal se elimina a sí misma cuando la función app_main() retorna (como si hubiese un "vTaskDelete(NULL)" pero sin necesidad de ponerlo explicítamente como en las demás tareas).
+
+Cuestión 2 - ¿Qué diferencia hay entre habilitar el pull-up o el pull-down del GPIO elegido?
+
+La diferencia es el valor digital del pin en reposo. Entendemos por reposo cuando la entrada no tiene claramente valores de voltaje altos o bajos, sino voltajes intermedios sujetos a ruido por descarga estática de otros objetos (por ejemplo, si dejamos un cable suelto). Si se habilita el pull-up, se utiliza un circuito que garantiza un 1 estable en estos casos. Por su parte, si se habilita el pull-down se utiliza un circuito que garantiza un 0 estable en reposo. En el caso de pines configurados como salida no tienen mucho sentido estas resistencias porque el pin pondrá un 0 o un 1 en la salida. De hecho, en el ejercicio del encendido de LEDs hemos apreciado que habilitar el pull-up o el pull-down no tiene ningún efecto sobre el valor digital de las salidas (ni siquiera antes de la primera vez que escribimos explicítamente en ellas). En el caso de los pines de entrada sí que tienen sentido estas resistencias. En el ejercicio de lectura con GPIO hemos visto que con el pull-up habilitado tenemos un 1 estable en la entrada si no conectamos el pin a nada y con el pull-down tenemos un 0 estable cuando no conectamos el pin a nada.
+
+Cuestión 3 - ¿Qué voltaje se observa en los botones y swithches del entrenador? ¿Podemos conectarlos a los pines del ESP32?
+
+A través del multímetro medimos el voltaje tanto de los botones como en los switches que resulta ser de 5V. Aunque el ESP32 solamente admite hasta 3.3V de entrada, es posible conectarlo a los botones o switches con pulsos HIGH muy cortos (lo hicimos con la aprobación del profesor sin estropear la placa). No obstante, como norma general hay que tratar de no sobrepasar los 3.3V de entrada.

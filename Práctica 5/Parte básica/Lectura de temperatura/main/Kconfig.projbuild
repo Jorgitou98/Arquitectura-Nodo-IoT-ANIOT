@@ -1,0 +1,8 @@
+menu "Main Configuration"
+    config TEMP_PERIOD_MS
+        int "Reading temperature timer in ms"
+        range 10 3600000
+        default 1000
+        help
+            Reading temperature timer in milliseconds.
+endmenu

@@ -1,0 +1,29 @@
+menu "LEDs Configuration"
+    config GPIO_OUTPUT_0
+        int "Pin for led 0"
+        range 0 33
+        default 17
+        help
+            Pin for led 0
+
+    config GPIO_OUTPUT_1
+        int "Pin for led 1"
+        range 0 33
+        default 16
+        help
+            Pin for led 1
+
+    config GPIO_OUTPUT_2
+        int "Pin for led 2"
+        range 0 33
+        default 4
+        help
+            Pin for led 2
+
+    config GPIO_OUTPUT_3
+        int "Pin for led 3"
+        range 0 33
+        default 0
+        help
+            Pin for led 3
+endmenu

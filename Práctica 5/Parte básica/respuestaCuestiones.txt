@@ -1,0 +1,15 @@
+1) La dirección del sensor es 1000000(es decir, 0x40 expresado en hexadecimal). Si queremos hacer una operación de lectura (bit R/W a 1), ¿cómo construiremos el segundo argumento de la llamada a i2c_master_write_byte() que haremos tras i2c_master_start()?
+
+Para realizar una operación de lectura desplazaremos la dirección del sensor una bit hacia la izquierda (SENSOR_ADDR << 1) y haremos una or con el bit de lectura para colocar un 1 en el bit menos significativo ((SENSOR_ADDR << 1) | I2C_MASTER_READ).
+
+
+2) ¿Cuál es la diferencia entre 0xE3 y 0xF3? ¿Qué es clock stretching?
+
+La diferencia entre 0xE3 y 0xF3 es el modo en el que el Master hará las lecturas. Si utilizamos el registro 0xE3, la lectura de temperatura funcionará en Hold Master Mode y el Master estirará su reloj hasta que el sensor le envíe el valor medido (clock stretching). Si utilizamos el registro 0xF3, la lectura funciona en No Hold Master Mode y el sensor no reconoce las peticiones de lectura del maestro (envía NACKs) mientras la medición está en progreso. En el modo No Hold el maestro podría pasar a hacer otra cosa mientras la medición esté en progreso. Los diagramas de la página 20 de la especificación del sensor muestran el funcionamiento de cada modo.
+
+3) Dichos comandos devuelven 2 bytes, que leeremos en dos variables diferentes. ¿Cómo obtenemos posteriormente nuestro número de 16 bits para calcular la temperatura?
+
+Desplazamos el byte más significativo (el primero que nos llega) 8 posiciones hacia la izquierda para dejar "espacio" en los 8 bits menos significativo para el siguiente byte (el menos significativo). Los 8 bits menos significativos estarán a 0 tras el desplazamiento y habrá que poner en ellos los 1s del otro byte haciendo una or con él. En definitiva: (uint16_t value_16b = ((bufT[0] << 8) | bufT[1]);)
+
+
+

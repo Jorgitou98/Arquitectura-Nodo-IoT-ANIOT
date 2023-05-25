@@ -1,0 +1,64 @@
+menu "App Configuration"
+    config NUMBER_SAMPLES_DISTANCE
+        int "Number of samples for a ADC reading"
+        range 1 400
+        default 50
+        help
+            Number of samples for a ADC reading.
+
+    config READING_DISTANCE_PERIOD_MS
+        int "Reading distance period in miliseconds"
+        range 10 3600000
+        default 2000
+        help
+            Define the reading distance period in milliseconds.
+
+    config ADC1_CHAN
+        int "ADC1 channel for reading"
+        range 0 7
+        default 6
+        help
+            ADC1 channel for reading
+
+    config READING_HALL_PERIOD_MS
+        int "Reading hall period in miliseconds"
+        range 10 3600000
+        default 1000
+        help
+            Define the reading hall period in milliseconds.
+
+    config COUNTING_PERIOD_MS
+        int "Counting period in miliseconds"
+        range 10 3600000
+        default 1000
+        help
+            Counting period in milliseconds.
+
+    config GPIO_OUTPUT_0
+        int "Bit 0 output GPIO number"
+        range 0 33
+        default 19
+        help
+            GPIO number to write the LED 0 output.
+
+    config GPIO_OUTPUT_1
+        int "Bit 0 output GPIO number"
+        range 0 33
+        default 18
+        help
+            GPIO number to write the LED 1 output.
+
+    config GPIO_OUTPUT_2
+        int "Bit 0 output GPIO number"
+        range 0 33
+        default 5
+        help
+            GPIO number to write the LED 2 output.
+
+    config GPIO_BUTTON
+        int "GPIO number for button input"
+        range 0 33
+        default 25
+        help
+            GPIO number for button input
+endmenu

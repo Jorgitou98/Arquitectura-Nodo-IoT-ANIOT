@@ -1,0 +1,15 @@
+menu "GPIO Output Configuration"
+    config GPIO_OUTPUT
+        int "Output GPIO number"
+        range 0 33
+        default 18
+        help
+            GPIO number to write the LED output.
+
+    config TIMER_WRITE_PERIOD_MS
+        int "Reading timer period in miliseconds"
+        range 10 3600000
+        default 2000
+        help
+            Define the reading timer period in milliseconds.
+endmenu

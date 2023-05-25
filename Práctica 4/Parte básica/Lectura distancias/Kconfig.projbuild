@@ -1,0 +1,22 @@
+menu "App Configuration"
+    config NUMBER_SAMPLES
+        int "Number of samples for a ADC reading"
+        range 1 400
+        default 50
+        help
+            Number of samples for a ADC reading.
+
+    config READING_PERIOD_MS
+        int "Reading timer period in miliseconds"
+        range 10 3600000
+        default 1000
+        help
+            Define the reading timer period in milliseconds.
+
+    config ADC1_CHAN
+        int "ADC1 channel for reading"
+        range 0 7
+        default 6
+        help
+            ADC1 channel for reading
+endmenu

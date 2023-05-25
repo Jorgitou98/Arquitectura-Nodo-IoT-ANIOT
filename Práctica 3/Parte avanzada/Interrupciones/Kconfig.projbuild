@@ -1,0 +1,8 @@
+menu "GPIO Input Configuration"
+    config GPIO_INPUT
+        int "Input GPIO number"
+        range 0 33
+        default 18
+        help
+            GPIO number to read input.
+endmenu

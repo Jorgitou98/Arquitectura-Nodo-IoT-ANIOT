@@ -1,0 +1,29 @@
+menu "FSM Configuration"
+    config PERIOD_HALL_SEC
+        int "Period sampling hall in seconds"
+        range 1 3600
+        default 1
+        help
+            Period sampling hall in seconds
+
+    config PERIOD_TEMP_SEC
+        int "Period sampling temperature in seconds"
+        range 1 3600
+        default 2
+        help
+            Period sampling temperature in seconds
+
+    config PERIOD_SHOW_SEC
+        int "Period show results in seconds"
+        range 1 3600
+        default 5
+        help
+            Period show results in seconds
+
+    config PERIOD_BLINK_MS
+        int "Period blink in ms"
+        range 10 3600000
+        default 1000
+        help
+            Period blink in milliseconds   
+endmenu

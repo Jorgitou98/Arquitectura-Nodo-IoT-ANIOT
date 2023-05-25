@@ -1,0 +1,11 @@
+1. Una vez conseguido el voltaje que está devolviendo el sensor, ¿qué expresión usarás en el código para obtener la distancia en centímetros?
+
+Hemos visto en internet que otras personas que han trabajado con este sensor utilizan la expresión: distancia (cm) = 13/voltaje(V). Esto es porque la gráfica de la función y = 13/x aproxima bastante bien la curva de la hoja de especificaciones del sensor que relaciona el voltaje (V) y la distancia (cm). Simplemente debemos tener cuidado de que nuestro voltaje está en milivoltios y la expresión anterior supone que está en voltios. Por ello, adaptamos la expresión con el correspondiente factor de conversión: distancia (cm) = 1300/voltaje (mV).
+
+2. ¿Qué factor de atenuación debes configurar para el ADC?
+
+Como el sensor de distancias puede producir voltajes de hasta 3V (ver el máximo de la curva de la hoja de especificación), es necesario establecer suficiente atenuación para medirlo. Por ello, establecemos una atenución de 11dB (la más grande de entre las que podemos escoger) que, según el enunciado, es capaz de medir hasta 2.45V. No obstante, en la práctica hemos comprobado que con esta atenuación el ADC llega a medir hasta 3.1V sin problema. Con atenuaciones menores, el valor máximo del rango medible se queda corto para la posible salida del sensor. Por ejemplo, colocando 6 dB de atenuación, hemos visto que los objetos colocados a unos 4 cm del sensor se detectan como si estuviesen mucho más lejos porque los 3V de salida que del sensor se recogen como un voltaje mucho menor con el ADC.
+
+3. Propón varias alternativas de diseño: ¿Cuántas tareas? ¿Creando un único timer para todos o usando un timer para cada muestreo/LED?¿Usando eventos?¿Usando colas para el paso de mensajes entre tareas?
+
+(Contestada en la entrega de la parte avanzada, que es a la que se refiere).

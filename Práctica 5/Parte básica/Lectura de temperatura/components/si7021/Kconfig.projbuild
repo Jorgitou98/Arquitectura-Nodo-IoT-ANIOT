@@ -1,0 +1,22 @@
+menu "SI7021 Configuration"
+    config I2C_MASTER_NUM
+        int "Number of I2C controller"
+        range 0 1
+        default 0
+        help
+            Number of I2C controller use for SI7021 sensor.
+
+    config I2C_MASTER_SDA_IO
+        int "Pin for SDA line"
+        range 0 33
+        default 18
+        help
+            Pin for SDA line
+
+    config I2C_MASTER_SCL_IO
+        int "Pin for SCL line"
+        range 0 33
+        default 19
+        help
+            Pin for SCL line
+endmenu

@@ -1,0 +1,8 @@
+menu "GPIO Output Configuration"
+    config SAMPLING_PERIOD_MS
+        int "Sampling timer period in miliseconds"
+        range 10 3600000
+        default 2000
+        help
+            Define the sampling timer period in milliseconds.
+endmenu
